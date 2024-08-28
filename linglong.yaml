@@ -1,0 +1,30 @@
+version: "1"
+
+package:
+  id: io.github.TUNNEX
+  name: TUNNEX
+  version: 0.0.0.1
+  kind: app
+  description: |
+    Tunneling in experiments (TUNNEX) is a free open-source program with an easy-to use graphical
+
+command:
+  - /opt/apps/io.github.TUNNEX/files/bin/tunnex
+
+base: org.deepin.foundation/23.0.0
+runtime: org.deepin.Runtime/23.0.1
+
+sources:
+  - kind: git
+    url: https://github.com/prs-group/TUNNEX.git
+    version: master
+    commit: 13899367ba5bac68f06043e9127ff1cba9a6a1da
+
+build: |
+  cd /project/linglong/sources/TUNNEX.git
+  git apply ../../../0001-install.patch
+  mkdir build
+  cd build
+  cmake .. \
+        -DCMAKE_INSTALL_PREFIX=${PREFIX}
+  cmake --build . --target install -j$(nproc --all)
