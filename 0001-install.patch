@@ -1,0 +1,48 @@
+From c445e4ecd41a093b5a1ea258679383421aa39cbc Mon Sep 17 00:00:00 2001
+From: wjyrich <1071633242@qq.com>
+Date: Wed, 14 Aug 2024 18:10:20 +0800
+Subject: [PATCH] install
+
+---
+ Tunnex/CMakeLists.txt |  5 +++++
+ Tunnex/tunnex.desktop | 11 +++++++++++
+ 2 files changed, 16 insertions(+)
+ create mode 100644 Tunnex/tunnex.desktop
+
+diff --git a/Tunnex/CMakeLists.txt b/Tunnex/CMakeLists.txt
+index f58c979..f5ad8ce 100644
+--- a/Tunnex/CMakeLists.txt
++++ b/Tunnex/CMakeLists.txt
+@@ -139,6 +139,11 @@ ELSE()
+         LIBRARY DESTINATION lib
+         ARCHIVE DESTINATION lib
+         BUNDLE DESTINATION . COMPONENT Runtime)
++    install(FILES Resources/WKB_graphic_icon.png
++        DESTINATION share/icons)
++
++    install(FILES tunnex.desktop
++            DESTINATION share/applications)
+ ENDIF(WIN32)
+ 
+ #--------------------------------------------------------------------------------
+diff --git a/Tunnex/tunnex.desktop b/Tunnex/tunnex.desktop
+new file mode 100644
+index 0000000..7f443cd
+--- /dev/null
++++ b/Tunnex/tunnex.desktop
+@@ -0,0 +1,11 @@
++[Desktop Entry]
++Categories=Accessibility;Qt;Utility;
++Exec=tunnex
++Name=tunnex
++Name[zh_CN]=tunnex
++Icon=WKB_graphic_icon
++StartupNotify=false
++Terminal=false
++Type=Application
++GenericName=tunnex
++Version=1.0
+\ No newline at end of file
+-- 
+2.43.4
+
